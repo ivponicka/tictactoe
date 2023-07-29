@@ -17,12 +17,15 @@ public class TicTacToe{
             if(i % 2 == 0) {
                 System.out.print("Turn X: ");
                int[] spot = playerChoice(board);
+               board[spot[0]][spot[1]] = 'X';
             } else {
                 System.out.print("Turn Y: ");
                 int[] spot = playerChoice(board);
+                 board[spot[0]][spot[1]] = 'Y';
             }
-            
+            showBoard(board);
         }
+         
 
     }
 
@@ -41,7 +44,11 @@ public class TicTacToe{
         System.out.print("Choose the position (row and column): ");
         int row = input.nextInt();
         int column = input.nextInt();
-
+        if(board[row][column] == 'X' || board[row][column] == 'Y'){
+            System.out.println("Ups! This spot is already taken! Choose another one: ");
+             row = input.nextInt();
+             column = input.nextInt();
+        }
         return new int[] {row, column};
     }
 }
